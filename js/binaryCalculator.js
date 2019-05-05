@@ -9,39 +9,33 @@ const btnEql = document.getElementById('btnEql');
 const btnClr = document.getElementById('btnClr');
 
 
-function screenOp(e){
+function screenOp(e) {
     var btn = e.target || e.srcElement;
     res.innerHTML += document.getElementById(btn.id).innerHTML;
 }
+const printScreen = [btn0, btn1, btnSum, btnSub, btnMul, btnDiv];
+printScreen.map(x => { x.addEventListener('click', screenOp); });
 
-btn0.addEventListener('click', screenOp);
-btn1.addEventListener('click', screenOp);
-btnSum.addEventListener('click', screenOp);
-btnSub.addEventListener('click', screenOp);
-btnMul.addEventListener('click', screenOp);
-btnDiv.addEventListener('click', screenOp);
-
-
-function clear(e){
+function clear(e) {
     res.innerHTML = '';
 };
 
 btnClr.addEventListener('click', clear);
 
 
-function operate(){
+function operate() {
     let regEx = /([0-1]+)(\+|-|\*|\/)([0-1]+)/;
     let operation = document.getElementById('res').innerHTML.match(regEx);
     let x = parseInt(operation[1], 2);
     let y = parseInt(operation[3], 2);
-    
-    if (operation[2] === "+"){
+
+    if (operation[2] === "+") {
         res.innerHTML = (x + y).toString(2);
     }
     else if (operation[2] === "-") {
         res.innerHTML = (x - y).toString(2);
     }
-    else if (operation[2] === "*"){
+    else if (operation[2] === "*") {
         res.innerHTML = (x * y).toString(2);
     }
 
